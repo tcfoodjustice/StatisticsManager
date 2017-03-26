@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: TCFJ Stats Environment Assets
+
+Parameters:
+  DeploymentId:
+    Description: Current Deployment Id
+    Type: String
+  Alias:
+    Description: Alias name
+    Type: String
+  Version:
+    Description: Deployment version number
+    Type: String
+
+Resources:
+  TCFJStatsFunctionAlias:
+    Type: AWS::Lambda::Alias
+    Properties:
+      FunctionName: TCFJStatsFunction
+      FunctionVersion: !Ref Version
+      Name: !Ref Alias
