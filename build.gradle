@@ -9,10 +9,7 @@ repositories {
     mavenCentral()
 }
 
-jar {
-    baseName = 'tcfj-stats'
-    version = ''
-}
+
 task buildZip(type: Zip) {
     from compileJava
     from processResources

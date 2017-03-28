@@ -10,7 +10,7 @@ Resources:
       Handler: org.tcfoodjustice.stats.StatisticsHandler
       MemorySize: 512
       Runtime: java8
-      CodeUri: build/distributions/tcfj-stats.zip
+      CodeUri: build/distributions/StatisticsManager.zip
       Environment:
         Variables:
           RECIPIENTS: "andrew.larsen@tcfoodjustice.org andrew.larsen@tcfoodjustice.org"
