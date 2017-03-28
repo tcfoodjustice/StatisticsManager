@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class EmailClient {
     private static final Logger log = Logger.getLogger(EmailClient.class);
 
-    public void sendEmail( SendRawEmailRequest request) {
+    public void sendEmail( SendEmailRequest request) {
         log.info("Attempting to send an email through Amazon SES by using the AWS SDK for Java...");
         // Choose the AWS region of the Amazon SES endpoint you want to connect to. Note that your sandbox
         // status, sending limits, and Amazon SES identity-related settings are specific to a given AWS
@@ -31,7 +31,7 @@ public class EmailClient {
         // For more information, see http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html
         AmazonSimpleEmailService client = AmazonSimpleEmailServiceClientBuilder.standard().withRegion(REGION.getName()).build();
         // Send the email.
-        SendRawEmailResult result = client.sendRawEmail(request);
+        SendEmailResult result = client.sendEmail(request);
         log.info("Email sent with messageId " + result.getMessageId());
 
     }

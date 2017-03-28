@@ -11,6 +11,10 @@ import org.mockito.MockitoAnnotations;
  */
 public class StatisticsHandlerTest {
 
+    private static final String templateFilePath = "emailtemplate.html";
+    private static final String[] TO = new String[]{"andrew.larsen@tcfoodjustice.org"};
+    private static final String FROM = "andrew.larsen@tcfoodjustice.org";
+    private static final String SUBJECT = "Another test emaiil send";
     @Mock
     Context context;
 

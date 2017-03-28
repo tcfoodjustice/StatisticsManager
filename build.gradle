@@ -1,14 +1,21 @@
 group 'org.tcfoodjustice.stats'
-version '1.0-SNAPSHOT'
+version ''
 
 apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
+repositories {
+    mavenCentral()
+}
+
+jar {
+    baseName = 'tcfj-stats'
+    version = ''
+}
 task buildZip(type: Zip) {
     from compileJava
-    from ProcessResources
-    archiveName 'tcfj-stats.zip'
+    from processResources
     into('lib') {
         from configurations.runtime
     }
@@ -16,11 +23,10 @@ task buildZip(type: Zip) {
 
 build.dependsOn buildZip
 
-repositories {
-    mavenCentral()
-}
 
 dependencies {
+
+
     compile group: 'org.springframework', name: 'spring-context', version: '4.3.7.RELEASE'
     compile("org.springframework:spring-web:4.3.7.RELEASE")
 

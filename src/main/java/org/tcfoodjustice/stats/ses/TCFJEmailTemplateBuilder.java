@@ -16,7 +16,10 @@ import java.util.Map;
 public class TCFJEmailTemplateBuilder {
 
     private static final String GROUP_KEY = "groups";
-    private Map<String, List<Group>> groupBindings;
+    private static final String VIEWS_KEY = "views";
+    private static final String VISITORS_KEY = "visitors";
+
+    private Map<String, Object> groupBindings;
     private String html;
 
     /**
@@ -24,8 +27,12 @@ public class TCFJEmailTemplateBuilder {
      */
     public TCFJEmailTemplateBuilder(String html) {
         this.html = html;
-        this.groupBindings = new HashMap<String, List<Group>>(){{
+        this.groupBindings = new HashMap<String, Object>(){{
             put(GROUP_KEY, new ArrayList());
+            put(VIEWS_KEY, "0");
+            put(VISITORS_KEY, "0");
+
+
         }};
     }
 
@@ -43,9 +50,27 @@ public class TCFJEmailTemplateBuilder {
      * @return
      */
     public TCFJEmailTemplateBuilder withGroupBindings(List<Group> groups){
-        this.groupBindings = new HashMap<String, List<Group>>(){{
-            put(GROUP_KEY, groups);
-        }};
+        this.groupBindings.put(GROUP_KEY, groups);
+        return this;
+    }
+
+    /**
+     * Method to add views bindings
+     * @param views
+     * @return
+     */
+    public TCFJEmailTemplateBuilder withViewsBindings(String views){
+        this.groupBindings.put(VIEWS_KEY, views);
+        return this;
+    }
+
+    /**
+     * Method to add visitors bindings
+     * @param visitors
+     * @return
+     */
+    public TCFJEmailTemplateBuilder withVisitorsBindings(String visitors){
+        this.groupBindings.put(VISITORS_KEY, visitors);
         return this;
     }
 

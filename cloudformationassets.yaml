@@ -13,8 +13,10 @@ Resources:
       CodeUri: build/distributions/tcfj-stats.zip
       Environment:
         Variables:
-          LOAD_LIMIT: 5000
-          MAX_RUN_COUNT: 25
+          RECIPIENTS: "andrew.larsen@tcfoodjustice.org andrew.larsen@tcfoodjustice.org"
+          SUBJECT: "TCFJ Wordpress Statistics"
+          FROM: andrew.larsen@tcfoodjustice.org
+          EMAIL_TEMPLATE: emailtemplate.html
       Events:
         Timer:
           Type: Schedule
