@@ -11,6 +11,9 @@ Resources:
       MemorySize: 512
       Runtime: java8
       CodeUri: build/distributions/StatisticsManager.zip
+      Policies:
+       - AmazonSESFullAccess
+       - AWSLambdaBasicExecutionRole
       Environment:
         Variables:
           RECIPIENTS: "andrew.larsen@tcfoodjustice.org andrew.larse514@gmail.com"
