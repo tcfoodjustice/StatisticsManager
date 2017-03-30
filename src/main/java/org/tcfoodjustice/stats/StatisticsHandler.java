@@ -20,7 +20,7 @@ import java.util.Map;
 /**
  * Created by andrew.larsen on 3/25/2017.
  */
-public class StatisticsHandler extends AbstractHandler<SpringConfig> implements RequestHandler<String, String> {
+public class StatisticsHandler extends AbstractHandler<SpringConfig> implements RequestHandler<Object, String> {
     private static final Logger log = Logger.getLogger(StatisticsHandler.class);
     private static final String RECIPIENTS_KEY = "RECIPIENTS";
     private static final String SUBJECT_KEY = "SUBJECT";
@@ -38,8 +38,9 @@ public class StatisticsHandler extends AbstractHandler<SpringConfig> implements 
 
     }
     @Override
-    public String handleRequest(String input, Context context) {
+    public String handleRequest(Object input, Context context) {
         try {
+            log.debug("Received input " + input);
             Map<String, String> env = System.getenv();
             String[] recipients = env.getOrDefault(RECIPIENTS_KEY, "andrew.larsen@tcfoodjustice.org").split(" ");
             log.info("Recipients " + recipients);
