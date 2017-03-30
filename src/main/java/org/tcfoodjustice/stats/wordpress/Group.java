@@ -80,4 +80,14 @@ public class Group {
         this.url = url;
     }
 
+    @Override
+    public String toString() {
+        return "Group{" +
+                "group='" + group + '\'' +
+                ", name='" + name + '\'' +
+                ", icon=" + icon +
+                ", total=" + total +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

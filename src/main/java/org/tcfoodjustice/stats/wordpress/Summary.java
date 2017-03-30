@@ -59,4 +59,16 @@ public class Summary {
     public void setFollowers(Integer followers) {
         this.followers = followers;
     }
+
+    @Override
+    public String toString() {
+        return "Summary{" +
+                "views=" + views +
+                ", visitors=" + visitors +
+                ", likes=" + likes +
+                ", reblogs=" + reblogs +
+                ", comments=" + comments +
+                ", followers=" + followers +
+                '}';
+    }
 }

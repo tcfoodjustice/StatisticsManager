@@ -1,5 +1,6 @@
 package org.tcfoodjustice.stats.file;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.stream.Stream;
  */
 @Component
 public class FileReader {
+    private static final Logger log = Logger.getLogger(FileReader.class);
 
     /**
      * Method to read in file and retrun as string
@@ -32,6 +34,8 @@ public class FileReader {
             throw new RuntimeException("File does not exist");
 
         }
+        log.debug("File url " + url);
+
         Path path = Paths.get(url.toURI());
 
         StringBuilder data = new StringBuilder();

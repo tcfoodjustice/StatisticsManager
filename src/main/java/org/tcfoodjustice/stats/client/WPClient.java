@@ -1,5 +1,6 @@
 package org.tcfoodjustice.stats.client;
 
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.tcfoodjustice.stats.wordpress.Summary;
  */
 @Component
 public class WPClient {
+    private static final Logger log = Logger.getLogger(WPClient.class);
 
     //todo-add as param
     private static final String TOKEN_KEY = "WP_TOKEN";
@@ -47,6 +49,7 @@ public class WPClient {
                 .queryParam(periodParam, period)
                 .queryParam(fieldsParam, fields);
         String url = builder.toUriString();
+        log.debug("About to send request to " + url);
         ResponseEntity<Referrer> response = restTemplate.exchange(url, HttpMethod.GET, httpEntity, Referrer.class);
         return response.getBody();
     }
@@ -62,6 +65,8 @@ public class WPClient {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(summaryUrl)
                 .queryParam(periodParam, period);
         String url = builder.toUriString();
+        log.debug("About to send request to " + url);
+
         ResponseEntity<Summary> response = restTemplate.exchange(url, HttpMethod.GET, httpEntity, Summary.class);
 
         return response.getBody();

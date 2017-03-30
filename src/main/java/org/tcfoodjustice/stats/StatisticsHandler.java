@@ -41,24 +41,30 @@ public class StatisticsHandler extends AbstractHandler<SpringConfig> implements 
     public String handleRequest(String input, Context context) {
         try {
             Map<String, String> env = System.getenv();
-            String[] recipients = env.getOrDefault(RECIPIENTS_KEY, "").split(" ");
-            String subject = env.getOrDefault(SUBJECT_KEY, "");
-            String from = env.getOrDefault(FROM_KEY, "");
-            String emailTemplate = env.getOrDefault(EMAIL_TEMPLATE_KEY, "");
-
+            String[] recipients = env.getOrDefault(RECIPIENTS_KEY, "andrew.larsen@tcfoodjustice.org").split(" ");
+            log.info("Recipients " + recipients);
+            String subject = env.getOrDefault(SUBJECT_KEY, "TCFJ Wordpress Statistics");
+            log.info("subject " + subject);
+            String from = env.getOrDefault(FROM_KEY, "andrew.larsen@tcfoodjustice.org");
+            log.info("from " +  from);
+            String emailTemplate = env.getOrDefault(EMAIL_TEMPLATE_KEY, "emailtemplate.html");
+            log.info("emplateTemplate " + emailTemplate);
             //first grap the referrers
             Referrer referrer = wpClient.getReferrer();
+            log.info("retrieved referrer " + referrer);
             List<Group> groups = referrer.getGroups();
             //then summary
             Summary summary = wpClient.getSummary();
+            log.info("Retrieved summary " + subject);
             //now create the email with our email builder by reading in the emailtemplate html page as a string
             String html = fileReader.getFileAsString(emailTemplate);
-
+            log.debug("read html template " + html);
             String email = TCFJEmailTemplateBuilder.fromHtml(html)
                     .withGroupBindings(groups)
                     .withVisitorsBindings(String.valueOf(summary.getVisitors()))
                     .withViewsBindings(String.valueOf(summary.getViews()))
                     .renderHtml();
+            log.debug("created html template " + email);
 
             SendEmailRequest request = EmailRequestBuilder
                     .fromBody(email)

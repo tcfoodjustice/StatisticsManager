@@ -19,5 +19,3 @@ deployment:
     commands:
       - aws cloudformation package --template-file cloudformationassets.yaml --output-template-file formation_assets_deploy.yaml --s3-bucket tcfjdeployables
       - aws cloudformation deploy --template-file formation_assets_deploy.yaml --capabilities CAPABILITY_IAM --stack-name tcfj-email-lambda
-      - aws cloudformation package --template-file formation_env.yaml --output-template-file formation_deploy.yaml --s3-bucket tcfjdeployables
-      - aws cloudformation deploy --template-file formation_deploy.yaml --capabilities CAPABILITY_IAM --stack-name tcfj-email-dev --parameter-overrides Alias=dev Version=${CIRCLE_BUILD_NUM}

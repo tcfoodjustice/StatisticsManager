@@ -52,4 +52,10 @@ public class Referrer {
         return groupList;
     }
 
+    @Override
+    public String toString() {
+        return "Referrer{" +
+                "days=" + days +
+                '}';
+    }
 }

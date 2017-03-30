@@ -13,7 +13,7 @@ Resources:
       CodeUri: build/distributions/StatisticsManager.zip
       Environment:
         Variables:
-          RECIPIENTS: "andrew.larsen@tcfoodjustice.org andrew.larsen@tcfoodjustice.org"
+          RECIPIENTS: "andrew.larsen@tcfoodjustice.org andrew.larse514@gmail.com"
           SUBJECT: "TCFJ Wordpress Statistics"
           FROM: andrew.larsen@tcfoodjustice.org
           EMAIL_TEMPLATE: emailtemplate.html
