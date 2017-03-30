@@ -11,12 +11,13 @@ Resources:
       MemorySize: 512
       Runtime: java8
       CodeUri: build/distributions/StatisticsManager.zip
+      Timeout: 15
       Policies:
        - AmazonSESFullAccess
        - AWSLambdaBasicExecutionRole
       Environment:
         Variables:
-          RECIPIENTS: "andrew.larsen@tcfoodjustice.org andrew.larse514@gmail.com"
+          RECIPIENTS: "andrew.larsen@tcfoodjustice.org andrew.larse514@gmail.com paulhilsen@hotmail.com"
           SUBJECT: "TCFJ Wordpress Statistics"
           FROM: andrew.larsen@tcfoodjustice.org
           EMAIL_TEMPLATE: emailtemplate.html
