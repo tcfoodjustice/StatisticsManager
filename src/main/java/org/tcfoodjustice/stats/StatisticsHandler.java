@@ -4,6 +4,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.amazonaws.services.simpleemail.model.SendEmailRequest;
 import org.apache.log4j.Logger;
+import org.joda.time.LocalDate;
 import org.tcfoodjustice.stats.client.WPClient;
 import org.tcfoodjustice.stats.config.SpringConfig;
 import org.tcfoodjustice.stats.file.FileReader;
@@ -45,6 +46,7 @@ public class StatisticsHandler extends AbstractHandler<SpringConfig> implements 
             String[] recipients = env.getOrDefault(RECIPIENTS_KEY, "andrew.larsen@tcfoodjustice.org").split(" ");
             log.info("Recipients " + recipients);
             String subject = env.getOrDefault(SUBJECT_KEY, "TCFJ Wordpress Statistics");
+            subject += " " + LocalDate.now().toString();
             log.info("subject " + subject);
             String from = env.getOrDefault(FROM_KEY, "andrew.larsen@tcfoodjustice.org");
             log.info("from " +  from);
